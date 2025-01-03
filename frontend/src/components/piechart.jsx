@@ -90,7 +90,10 @@ console.log(counts); // This will show the correct count for each difficulty
             {/* Profile Data Section */}
             <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
                 <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
-                    Sahil Dhingai
+                    {/* // add the name of the user  */}
+                    {
+                        localStorage.getItem("Fullname")
+                    }
                 </h2>
                 {/* Doughnut Chart */}
                 <Doughnut data={chartData} options={options} />
