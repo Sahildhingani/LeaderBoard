@@ -37,7 +37,7 @@ function Piechart() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.post(`${import.meta.env.BACKEND_URL}/user/ranking`, {
+                const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/ranking`, {
                      name : String(localStorage.getItem("Leetuser")),
                 });
                 const data = response.data.progress.numAcceptedQuestions;

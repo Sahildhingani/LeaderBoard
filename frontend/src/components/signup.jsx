@@ -28,7 +28,7 @@ function Signup() {
 
     try {
       setLoading(true); // Start loading
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/user/signup`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, {
         Fullname: username,
         Leetuser: leetcodeId,
         Email: email,

@@ -24,7 +24,7 @@ function Layout() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`${import.meta.env.BACKEND_URL}/user/ranking`);
+                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/ranking`);
                 console.log("Fetched Data:", response.data.todo.users);
             } catch (error) {
                 console.error("Error fetching data:", error.message);

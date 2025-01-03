@@ -13,7 +13,7 @@ function Nav() {
     const handlelogout = async () => {
         try {
             // Call the logout endpoint
-            const response = await axios.get(`${import.meta.env.BACKEND_URL}/user/logout`);
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/logout`);
             
             if (response.status === 200) {
                 // Clear cookies and localStorage after successful logout

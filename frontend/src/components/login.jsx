@@ -18,7 +18,7 @@ function Login() {
     }
 
     try {
-      const response = await axios.post(`${import.meta.env.BACKEND_URL}/user/login`, {
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, {
         Email: email,
         Password: pass,
       });

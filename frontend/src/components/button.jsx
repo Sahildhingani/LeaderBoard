@@ -17,7 +17,7 @@ function Buttons() {
 
         try {
             // Fetch all user data from the backend
-            const Userdata = await axios.post(`${import.meta.env.BACKEND_URL}/user/getdata`);
+            const Userdata = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/getdata`);
 
             if (!Userdata?.data?.data) {
                 console.error("User Data Fetch Failed: No data found");
@@ -38,7 +38,7 @@ function Buttons() {
 
                     try {
                         // Get ranking data for each user
-                        const quesResp = await axios.post(`${import.meta.env.BACKEND_URL}/user/ranking`, { name });
+                        const quesResp = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/ranking`, { name });
 
                         if (!quesResp?.data?.progress?.numAcceptedQuestions) {
                             console.warn(`No questions data available for user: ${name}`);
