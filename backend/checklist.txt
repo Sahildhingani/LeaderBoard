@@ -1,0 +1,9 @@
+// left work 
+
+1. create a nav bar abd set up logout functionality (cookie issue is not yet solved );
+2. set the general ranking 
+3. functionality to create a group and join a group 
+4. and set there ranking 
+
+// set the schema of redux rember need group id general id -- general ranking 
+// for ranking store in redux in sorted mannner 
