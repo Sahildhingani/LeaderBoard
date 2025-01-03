@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI).then(()=>console.log("mongodb is connect
 
 // middlewears
 const corsOptions = {
-    origin: "http://localhost:5173",  // Replace with your frontend URL
+    origin: "*",  // Replace with your frontend URL
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   };
