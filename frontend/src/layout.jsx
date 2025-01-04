@@ -43,7 +43,7 @@ function Layout() {
                     <Buttons />
 
                     {/* Ranking Section */}
-                    <div className="flex flex-wrap gap-4 justify-center sm:justify-start mt-5 overflow-auto max-h-[calc(100vh-200px)]">
+                    <div className="flex flex-wrap lg:pl-14   gap-4 justify-center sm:justify-start mt-5 overflow-auto max-h-[calc(100vh-200px)]">
                         {users.map((user) => (
                             <Card
                                 key={user.id}
@@ -55,7 +55,7 @@ function Layout() {
                 </div>
 
                 {/* Pie Chart Section */}
-                <div className="flex-1 h-full max-w-full mt-5 lg:mt-0">
+                <div className="flex-1 h-full max-w-full  lg:mt-0">
                     <Piechart />
                 </div>
             </div>
