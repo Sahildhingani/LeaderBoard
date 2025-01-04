@@ -3,23 +3,21 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {
-  // State variables
   const [username, setUsername] = useState("");
   const [leetcodeId, setLeetcodeId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState(""); // State for success or error messages
-  const [loading, setLoading] = useState(false); // State for loading indicator
-  const navigate = useNavigate(); // For navigation after signup
+  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  // Handle Signup
   const handleSignup = async () => {
     if (!username || !leetcodeId || !email || !password) {
       setMessage("All fields are required.");
       return;
     }
 
-    // Simple email validation
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
       setMessage("Please enter a valid email.");
@@ -27,7 +25,7 @@ function Signup() {
     }
 
     try {
-      setLoading(true); // Start loading
+      setLoading(true);
       const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/signup`, {
         Fullname: username,
         Leetuser: leetcodeId,
@@ -36,14 +34,14 @@ function Signup() {
       });
 
       if (response.data.success) {
-        setMessage("User created successfully!"); // Success message
-        setTimeout(() => navigate("/"), 2000); // Redirect after a short delay
+        setMessage("User created successfully!");
+        setTimeout(() => navigate("/"), 2000);
       }
     } catch (error) {
       console.error("Signup Failed", error.response?.data || error.message);
       setMessage("Signup failed. Please try again.");
     } finally {
-      setLoading(false); // End loading
+      setLoading(false);
     }
   };
 
@@ -54,15 +52,17 @@ function Signup() {
           Create Your Account
         </h2>
 
-        {/* Success or Error Message */}
         {message && (
-          <div className={`text-center mb-4 ${message.includes("successfully") ? "text-green-600" : "text-red-600"}`}>
+          <div
+            className={`text-center mb-4 ${
+              message.includes("successfully") ? "text-green-600" : "text-red-600"
+            }`}
+          >
             {message}
           </div>
         )}
 
         <form className="space-y-6">
-          {/* Username Input */}
           <div>
             <label
               htmlFor="username"
@@ -81,7 +81,6 @@ function Signup() {
             />
           </div>
 
-          {/* LeetCode ID Input */}
           <div>
             <label
               htmlFor="leetcodeId"
@@ -100,7 +99,6 @@ function Signup() {
             />
           </div>
 
-          {/* Email Input */}
           <div>
             <label
               htmlFor="email"
@@ -119,7 +117,6 @@ function Signup() {
             />
           </div>
 
-          {/* Password Input */}
           <div>
             <label
               htmlFor="password"
@@ -127,23 +124,33 @@ function Signup() {
             >
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              name="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-600"
+              >
+                {showPassword ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
           </div>
 
-          {/* Signup Button */}
           <div>
             <button
               type="button"
               onClick={handleSignup}
-              className={`w-full py-2 rounded-lg transition duration-300 ${loading ? "bg-gray-400" : "bg-green-600 text-white hover:bg-green-700"}`}
+              className={`w-full py-2 rounded-lg transition duration-300 ${
+                loading ? "bg-gray-400" : "bg-green-600 text-white hover:bg-green-700"
+              }`}
               disabled={loading}
             >
               {loading ? "Signing Up..." : "Sign Up"}
@@ -156,4 +163,5 @@ function Signup() {
 }
 
 export default Signup;
+
 

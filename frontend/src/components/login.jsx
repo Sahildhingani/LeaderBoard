@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function Login() {
-  // State variables
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [error, setError] = useState(""); // To store error messages
+  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  // Handle Login
   const handleLogin = async () => {
     if (!email || !pass) {
       setError("Email and password are required.");
@@ -18,19 +17,18 @@ function Login() {
     }
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/login`, {
-        Email: email,
-        Password: pass,
-      });
+      const response = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/user/login`,
+        {
+          Email: email,
+          Password: pass,
+        }
+      );
 
       if (response.data.success) {
-        // Store the leetuser in local storage
         localStorage.setItem("Leetuser", response.data.leetuser);
-        localStorage.setItem("Fullname",response.data.Fullname);
-        // Set a cookie that expires in 1 day
-document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; sameSite=Strict`;
-
-        // Redirect to home page
+        localStorage.setItem("Fullname", response.data.Fullname);
+        document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; sameSite=Strict`;
         navigate("/ranking");
       } else {
         setError("Invalid email or password.");
@@ -48,12 +46,7 @@ document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; 
           Login to Your Account
         </h2>
 
-        {/* Error Message */}
-        {error && (
-          <div className="text-red-600 text-center mb-4">
-            {error}
-          </div>
-        )}
+        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
 
         <form className="space-y-6">
           {/* Email Input */}
@@ -75,7 +68,7 @@ document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; 
             />
           </div>
 
-          {/* Password Input */}
+          {/* Password Input with Eye Button */}
           <div>
             <label
               htmlFor="password"
@@ -83,15 +76,24 @@ document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; 
             >
               Password
             </label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={pass}
-              onChange={(e) => setPass(e.target.value)}
-              placeholder="Enter your password"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
-            />
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                name="password"
+                value={pass}
+                onChange={(e) => setPass(e.target.value)}
+                placeholder="Enter your password"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-600"
+              >
+                {showPassword ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
           </div>
 
           {/* Login Button */}
@@ -108,10 +110,7 @@ document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; 
 
         <p className="mt-4 text-center text-sm text-gray-600">
           Don’t have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-blue-500 hover:underline"
-          >
+          <Link to="/signup" className="text-blue-500 hover:underline">
             Sign up
           </Link>
         </p>
@@ -121,4 +120,5 @@ document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; 
 }
 
 export default Login;
+
 
