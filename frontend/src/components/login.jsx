@@ -6,8 +6,9 @@ import { useNavigate } from "react-router-dom";
 function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State for password visibility
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = async () => {
@@ -15,6 +16,9 @@ function Login() {
       setError("Email and password are required.");
       return;
     }
+
+    setIsLoading(true);
+    setError("");
 
     try {
       const response = await axios.post(
@@ -36,6 +40,8 @@ function Login() {
     } catch (error) {
       setError("Login Failed. Please try again later.");
       console.error("Login Failed", error.response?.data || error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -49,7 +55,6 @@ function Login() {
         {error && <div className="text-red-600 text-center mb-4">{error}</div>}
 
         <form className="space-y-6">
-          {/* Email Input */}
           <div>
             <label
               htmlFor="email"
@@ -68,7 +73,6 @@ function Login() {
             />
           </div>
 
-          {/* Password Input with Eye Button */}
           <div>
             <label
               htmlFor="password"
@@ -96,14 +100,21 @@ function Login() {
             </div>
           </div>
 
-          {/* Login Button */}
           <div>
             <button
               type="button"
               onClick={handleLogin}
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300 flex items-center justify-center"
+              disabled={isLoading}
             >
-              Login
+              {isLoading ? (
+                <div className="spinner">
+                  <div className="double-bounce1"></div>
+                  <div className="double-bounce2"></div>
+                </div>
+              ) : (
+                "Login"
+              )}
             </button>
           </div>
         </form>
@@ -115,10 +126,48 @@ function Login() {
           </Link>
         </p>
       </div>
+
+      {/* Add Spinner Styles */}
+      <style>
+        {`
+          .spinner {
+            position: relative;
+            width: 20px;
+            height: 20px;
+          }
+
+          .double-bounce1, .double-bounce2 {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+            animation: bounce 2s infinite ease-in-out;
+          }
+
+          .double-bounce2 {
+            animation-delay: -1s;
+          }
+
+          @keyframes bounce {
+            0%, 100% {
+              transform: scale(0);
+            } 
+            50% {
+              transform: scale(1);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }
 
 export default Login;
+
+
 
 
