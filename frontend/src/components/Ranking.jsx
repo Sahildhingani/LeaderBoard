@@ -105,21 +105,30 @@ function Ranking() {
                 <h1>LeaderBoard</h1>
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
             </div>
-            <div className="flex flex-col mt-8 overflow-x-scroll">
-                <div className="bg-blue-950 h-10 w-96 md:w-192 rounded-xl border-2 border-black flex justify-around items-center flex-wrap">
+            <div className="flex flex-col mt-8 w-full">
+                <div className="bg-blue-950 h-10 w-96 md:w-192 rounded-xl border-2 border-black flex justify-around items-center">
                     <h1 className="text-gray-200 font-bold text-lg">Rank</h1>
                     <h1 className="text-gray-200 font-bold text-lg">UserName</h1>
                     <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1>
                     <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 mt-5">
+                <div className="flex flex-col gap-5 mt-5 w-full">
                     {users.map((user, index) => (
-                        <Card rank={index + 1} key={user.id} ranking={user.ranking} username={user.name} questions={user.totalSolved} />
+                        <div className="w-full md:w-auto">
+                            <Card
+                                rank={index + 1}
+                                key={user.id}
+                                ranking={user.ranking}
+                                username={user.name}
+                                questions={user.totalSolved}
+                            />
+                        </div>
                     ))}
                 </div>
             </div>
         </div>
     );
+    
 }
 
 export default Ranking;
