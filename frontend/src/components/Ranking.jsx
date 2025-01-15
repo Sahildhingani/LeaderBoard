@@ -112,7 +112,7 @@ function Ranking() {
                     {/* <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1> */}
                     <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 overflow-x-scroll mt-5">
+                <div className="flex flex-col gap-5 mt-5">
                     {users.map((user, index) => (
                         <Card rank={index + 1} key={user.id} username={user.name} questions={user.totalSolved} />
                     ))}
