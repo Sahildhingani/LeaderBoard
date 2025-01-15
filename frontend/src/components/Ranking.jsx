@@ -105,32 +105,23 @@ function Ranking() {
                 <h1>LeaderBoard</h1>
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
             </div>
-            <div className="flex flex-col mt-8 w-full">
-                <div className="bg-blue-950 h-10 w-96 md:w-192 rounded-xl border-2 border-black flex justify-around items-center">
+            <div className="flex flex-col mt-8 justify-center items-center">
+                <div className="bg-blue-950 h-10 w-80 md:w-192 rounded-xl border-2 border-black flex justify-around items-center flex-wrap">
                     <h1 className="text-gray-200 font-bold text-lg">Rank</h1>
                     <h1 className="text-gray-200 font-bold text-lg">UserName</h1>
-                    <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1>
+                    {/* <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1> */}
                     <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 mt-5 w-full">
+                <div className="flex flex-col gap-5 overflow-x-scroll mt-5">
                     {users.map((user, index) => (
-                        <div className="w-full md:w-auto">
-                            <Card
-                                rank={index + 1}
-                                key={user.id}
-                                ranking={user.ranking}
-                                username={user.name}
-                                questions={user.totalSolved}
-                            />
-                        </div>
+                        <Card rank={index + 1} key={user.id} username={user.name} questions={user.totalSolved} />
                     ))}
                 </div>
             </div>
         </div>
     );
-    
 }
-
+// ranking={user.ranking} 
 export default Ranking;
 
 

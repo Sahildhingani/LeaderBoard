@@ -10,10 +10,10 @@ function Card({ rank=0,username = "Unknown User", ranking = "N/A", questions = 0
     };
 
     return (
-        <div className="border-2 flex w-96 md:w-192 items-center justify-around  border-black h-10 rounded-2xl bg-blue-950 flex-wrap ">
+        <div className="border-2 flex w-80 md:w-192 items-center justify-around  border-black h-10 rounded-2xl bg-blue-950 flex-wrap ">
         <h1 className="font-bold text-gray-200 text-lg ">{rank}</h1>
         <h1 className="font-bold text-gray-200 text-lg">{username}</h1>
-        <h1 className="font-bold text-gray-200 text-lg">{ranking}</h1>
+        {/* <h1 className="font-bold text-gray-200 text-lg">{ranking}</h1> */}
         <h1 className="font-bold text-gray-200 text-lg ">{questions}</h1>
     </div>
     );
