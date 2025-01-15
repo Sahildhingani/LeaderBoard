@@ -86,9 +86,9 @@ console.log(counts); // This will show the correct count for each difficulty
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className=" flex flex-col items-center justify-center  bg-gray-100">
             {/* Profile Data Section */}
-            <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-sm">
+            <div className="bg-white rounded-lg  p-6 h-full w-96">
                 <h2 className="text-xl font-bold text-gray-800 mb-4 text-center">
                     {/* // add the name of the user  */}
                     {

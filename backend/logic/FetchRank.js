@@ -1,9 +1,13 @@
 const axios = require('axios');
 
-const fetchLeetCodeUserRanking = async (name) => {
+const fetchLeetCodeUserRanking = async (req,resp) => {
+    const {name}=req.body
+
+
+
     // Ensure 'name' is provided and is a valid string
     if (!name || typeof name !== 'string') {
-        return 'Invalid username';
+        return resp.status(400).json({success:false,message:'Invalid username'});
     }
 
     const query = `
@@ -34,14 +38,15 @@ const fetchLeetCodeUserRanking = async (name) => {
 
         if (ranking) {
             console.log("Your rank is:", ranking); // Log ranking before returning
-            return ranking;
+            return resp.status(200).json({success:true,data:ranking});
         } else {
             console.log("Ranking not available");
-            return 'Ranking not available';
+            return resp.status(404).json({success:false,message:'Ranking not available'});
         }
     } catch (error) {
         console.error('Error fetching ranking:', error.message);
-        return 'Error fetching ranking';
+        return resp.status(500).json({success:false,message:'Error fetching ranking'});
+
     }
 };
 

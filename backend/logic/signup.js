@@ -2,10 +2,10 @@ const User = require("../model/usermodel");
 
 const handlesignup = async (req, resp) => {
   try {
-    const { Fullname, Email, Leetuser, Password } = req.body;
+    const { Fullname, Email, Leetuser, Password,Gender} = req.body;
 
     // Await the asynchronous User.create call
-    const data = await User.create({ Fullname, Email, Leetuser, Password });
+    const data = await User.create({ Fullname, Email, Leetuser, Password, Gender });
 
     if (data) {
       // Successful user creation

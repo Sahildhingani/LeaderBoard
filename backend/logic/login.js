@@ -31,6 +31,7 @@ const handlelogin = async (req, resp) => {
                 leetuser: data.Leetuser,
                 Fullname:data.Fullname,
                 token:Token,
+                Gender:data.Gender,
             });
         } else {
             // Invalid password

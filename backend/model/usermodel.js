@@ -26,6 +26,10 @@ const UserSchema=new mongoose.Schema({
         type:String,
         default:`https://img.freepik.com/premium-vector/avatar-icon0002_750950-43.jpg?semt=ais_hybrid`,
     },
+    Gender:{
+        type:String,
+        required:true,
+    }
 });
 
 // model 

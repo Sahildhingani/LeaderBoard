@@ -1,14 +1,24 @@
 import React from "react";
 
-function Card({ username, leetcoderank, questions }) {
+function Card({ rank=0,username = "Unknown User", ranking = "N/A", questions = 0 }) {
+    // Utility function for dynamic styling based on ranking
+    const getRankingClass = (ranking) => {
+        if (ranking === "N/A") return "text-gray-600";
+        if (ranking <= 10) return "text-green-500";
+        if (ranking <= 50) return "text-yellow-500";
+        return "text-red-500";
+    };
+
     return (
-        <div className="flex flex-col sm:flex-row items-center justify-between w-full max-w-md bg-gray-200 shadow-md rounded-lg p-4 m-2 space-y-2 sm:space-y-0 sm:space-x-4 hover:shadow-lg transition-shadow duration-300 ease-in-out">
-            <h1 className="text-lg font-semibold text-gray-800">{username}</h1>
-            <h2 className="">
-                 <span className="font-medium text-gray-900">{questions || "0"}</span>
-            </h2>
-        </div>
+        <div className="border-2 flex w-96 md:w-192 items-center justify-around  border-black h-10 rounded-2xl bg-blue-950 flex-wrap ">
+        <h1 className="font-bold text-gray-200 text-lg ">{rank}</h1>
+        <h1 className="font-bold text-gray-200 text-lg">{username}</h1>
+        <h1 className="font-bold text-gray-200 text-lg">{ranking}</h1>
+        <h1 className="font-bold text-gray-200 text-lg ">{questions}</h1>
+    </div>
     );
 }
 
 export default Card;
+
+

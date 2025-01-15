@@ -2,6 +2,7 @@
 const express=require("express");
 const mongoose=require("mongoose");
 const User=require("./model/usermodel");
+const Help = require("./model/helpmodel");
 const cookieParser=require("cookie-parser");
 const cors=require("cors");
 const app=express();
@@ -23,6 +24,8 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+
+
 app.use((req, res, next) => {
     console.log(`${req.method} ${req.url}`);
     next();

@@ -30,10 +30,12 @@ function Login() {
       );
 
       if (response.data.success) {
+        console.log(response)
         localStorage.setItem("Leetuser", response.data.leetuser);
         localStorage.setItem("Fullname", response.data.Fullname);
+        localStorage.setItem("Gender", response.data.Gender);
         document.cookie = `token=${response.data.Token}; path=/; max-age=86400; secure; sameSite=Strict`;
-        navigate("/ranking");
+        navigate("/home");
       } else {
         setError("Invalid email or password.");
       }

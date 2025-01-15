@@ -1,12 +1,11 @@
 import React, { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import Cookies from "js-cookie";
 import Nav from "./components/nav";
-import Piechart from "./components/piechart";
-import Buttons from "./components/button";
-import Card from "./components/Card";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import Ranking from "./components/Ranking";
+
 
 function Layout() {
     const navigate = useNavigate();
@@ -35,31 +34,10 @@ function Layout() {
     }, []);
 
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Nav />
-            <div className="flex flex-col lg:flex-row mt-5 gap-5 px-4 sm:px-6 lg:px-10">
-                {/* Button and Ranking Section */}
-                <div className="flex-1 h-full max-w-full overflow-y-auto">
-                    <Buttons />
-
-                    {/* Ranking Section */}
-                    <div className="flex flex-wrap lg:pl-14   gap-4 justify-center sm:justify-start mt-5 overflow-auto max-h-[calc(100vh-200px)]">
-                        {users.map((user) => (
-                            <Card
-                                key={user.id}
-                                username={user.name}
-                                questions={`Solved: ${user.totalSolved}`}
-                            />
-                        ))}
-                    </div>
-                </div>
-
-                {/* Pie Chart Section */}
-                <div className="flex-1 h-full max-w-full  lg:mt-0">
-                    <Piechart />
-                </div>
-            </div>
-        </div>
+        <div className=" h-screen w-screen flex flex-wrap overflow-y-scroll overflow-x-hidden">
+            <Nav/>
+            <Outlet/>
+        </div>       
     );
 }
 

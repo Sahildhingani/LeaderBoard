@@ -7,13 +7,14 @@ function Signup() {
   const [leetcodeId, setLeetcodeId] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [gender, setGender] = useState(""); // New state for gender
+  const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async () => {
-    if (!username || !leetcodeId || !email || !password) {
+    if (!username || !leetcodeId || !email || !password || !gender) {
       setMessage("All fields are required.");
       return;
     }
@@ -31,6 +32,7 @@ function Signup() {
         Leetuser: leetcodeId,
         Email: email,
         Password: password,
+        Gender: gender, // Include gender in the request
       });
 
       if (response.data.success) {
@@ -145,6 +147,27 @@ function Signup() {
           </div>
 
           <div>
+            <label
+              htmlFor="gender"
+              className="block text-sm font-medium text-gray-700 mb-2"
+            >
+              Gender
+            </label>
+            <select
+              id="gender"
+              name="Gender"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500"
+            >
+              <option value="">Select your gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div>
             <button
               type="button"
               onClick={handleSignup}
@@ -163,5 +186,7 @@ function Signup() {
 }
 
 export default Signup;
+
+
 
 

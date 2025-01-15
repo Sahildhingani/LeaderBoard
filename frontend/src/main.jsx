@@ -10,6 +10,9 @@ import Piechart from './components/piechart.jsx'
 import { elements } from 'chart.js'
 import { Provider } from 'react-redux'
 import store from './redux/store.js'
+import Ranking from './components/Ranking.jsx'
+import Dashboard from './components/Dahboard.jsx'
+import Help from './components/Help.jsx'
 
 const router=createBrowserRouter([
   {
@@ -27,21 +30,29 @@ const router=createBrowserRouter([
     ]
   },
   {
-    path:"/ranking",
+    path:"/",
     element:<Layout/>,
     children:[
       {
-        path:"/ranking",
-        element:<Piechart/>
+        path:"/home",
+        element:<Ranking/>
+      },
+      {
+        path:"/dashboard",
+        element:<Dashboard/>
+      },
+      {
+        path:"/help",
+        element:<Help/>
       }
     ]
   }
 ])
 createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-    <StrictMode>
+    
     <RouterProvider router={router}/>
-  </StrictMode>
+ 
   </Provider>,
   
 )
