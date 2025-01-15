@@ -91,35 +91,39 @@ function Ranking() {
     };
 
     if (isLoading) {
-        return <div className="font-bold text-blue-950">Loading...</div>;
+        return (
+            <div className="flex justify-center items-center h-screen ml-32 md:ml-160">
+                <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+            </div>
+        );
     }
 
     return (
         <div className="h-full w-full flex flex-col items-center overflow-x-hidden flex-wrap md:ml-56">
-            <div className="font-bold text-blue-950 text-4xl mt-3 md:mt-8 flex items-center gap-2 flex-wrap">
+            <div className="font-bold text-blue-950 text-4xl ml-5 mt-3 md:mt-8 flex items-center gap-2 flex-wrap">
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
                 <h1>LeaderBoard</h1>
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
             </div>
-            <div className="flex flex-col mt-8 ">
+            <div className="flex flex-col mt-8 overflow-x-scroll">
                 <div className="bg-blue-950 h-10 w-96 md:w-192 rounded-xl border-2 border-black flex justify-around items-center flex-wrap">
-                    <h1 className="text-gray-200 font-bold text-lg ">Rank</h1>  
-                    <h1 className="text-gray-200 font-bold text-lg ">UserName</h1>  
-                    <h1 className="text-gray-200 font-bold text-lg ">LeetRank</h1>  
-                    <h1 className="text-gray-200 font-bold text-lg ">Total Question.</h1>  
+                    <h1 className="text-gray-200 font-bold text-lg">Rank</h1>
+                    <h1 className="text-gray-200 font-bold text-lg">UserName</h1>
+                    <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1>
+                    <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 overflow-x-hidden mt-5 ">
-                {users.map((user, index) => (
-                    <Card rank={index + 1} key={user.id} ranking={user.ranking} username={user.name} questions={user.totalSolved} />
-                ))}
+                <div className="flex flex-col gap-5 mt-5">
+                    {users.map((user, index) => (
+                        <Card rank={index + 1} key={user.id} ranking={user.ranking} username={user.name} questions={user.totalSolved} />
+                    ))}
                 </div>
-                
             </div>
         </div>
     );
 }
 
 export default Ranking;
+
 
 
 
