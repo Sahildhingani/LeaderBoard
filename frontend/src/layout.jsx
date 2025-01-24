@@ -20,18 +20,18 @@ function Layout() {
         }
     }, [navigate]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/ranking`);
-                console.log("Fetched Data:", response.data.todo.users);
-            } catch (error) {
-                console.error("Error fetching data:", error.message);
-            }
-        };
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/ranking`);
+    //             console.log("Fetched Data:", response.data.todo.users);
+    //         } catch (error) {
+    //             console.error("Error fetching data:", error.message);
+    //         }
+    //     };
 
-        fetchData(); // Call the fetch function
-    }, []);
+    //     fetchData(); // Call the fetch function
+    // }, []);
 
     return (
         <div className=" h-screen w-screen flex flex-wrap overflow-y-scroll overflow-x-hidden">
