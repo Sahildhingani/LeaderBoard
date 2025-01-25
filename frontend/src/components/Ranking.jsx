@@ -32,7 +32,7 @@ function Ranking() {
 
                 await Promise.all(
                     users.map(async (user) => {
-                        const name = user.Leetuser;
+                        const name = user;
                         if (!name) {
                             console.warn("Invalid username in user data:", user);
                             return;

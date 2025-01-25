@@ -103,7 +103,7 @@ function Dashboard() {
     }, []);
 
     return (
-        <div className=" w-full flex flex-col md:ml-56">
+        <div className=" flex flex-col  md:ml-56">
             <h1 className="font-bold text-blue-950 text-3xl ml-24 mt-4 md:ml-5 md:mt-3">Dashboard</h1>
             <div className=" w-256 flex flex-col mt-8 gap-2 ml-20 md:flex-row md:justify-between md:ml-2">
                 {/* // leetcode rank  */}

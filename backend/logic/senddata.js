@@ -5,9 +5,12 @@ async function senddata(req, resp) {
     try {
         // Await the result of the database query
         const data = await User.find({});
-        console.log(data)
-        // Send the data in the response
-        resp.json({ data });
+         // Extract only the 'Fullname' field
+         const fullnames = data.map((user) => user.
+         Leetuser);
+
+         // Send the fullnames array in the response
+         resp.json({ data: fullnames });
     } catch (error) {
         // Handle any errors that occur during the database query
         console.error(error);

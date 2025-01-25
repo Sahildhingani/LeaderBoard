@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import backgroundimg from "../components/images/background.jpg"
 function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
