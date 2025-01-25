@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import backgroundimg from "../components/images/background.jpg"
+import background from "./images/contect.jpg"; // Ensure this path is correct
+
 function Login() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
@@ -30,7 +31,7 @@ function Login() {
       );
 
       if (response.data.success) {
-        console.log(response)
+        console.log(response);
         localStorage.setItem("Leetuser", response.data.leetuser);
         localStorage.setItem("Fullname", response.data.Fullname);
         localStorage.setItem("Gender", response.data.Gender);
@@ -48,13 +49,21 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full">
+    <div
+      className="min-h-screen w-full bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
+    >
+      {/* Login Card */}
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-sm w-full bg-opacity-80">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
           Login to Your Account
         </h2>
 
-        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+        {error && (
+          <div className="text-red-600 text-center mb-4">{error}</div>
+        )}
 
         <form className="space-y-6">
           <div>
@@ -169,6 +178,8 @@ function Login() {
 }
 
 export default Login;
+
+
 
 
 

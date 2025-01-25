@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import background from "./images/contect.jpg"; // Ensure the path to your image is correct
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -48,8 +49,14 @@ function Signup() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-      <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
+    <div
+      className="min-h-screen w-full bg-cover bg-center flex items-center justify-center"
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
+    >
+      {/* Signup Card */}
+      <div className="bg-white shadow-lg rounded-lg p-8 max-w-md w-full bg-opacity-80">
         <h2 className="text-2xl font-bold mb-6 text-gray-800 text-center">
           Create Your Account
         </h2>
@@ -64,7 +71,7 @@ function Signup() {
           </div>
         )}
 
-        <form className="space-y-6">
+        <form className="space-y-3">
           <div>
             <label
               htmlFor="username"
@@ -186,7 +193,3 @@ function Signup() {
 }
 
 export default Signup;
-
-
-
-
