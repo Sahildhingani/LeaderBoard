@@ -34,7 +34,7 @@ function Layout() {
     // }, []);
 
     return (
-        <div className=" h-screen w-screen flex flex-wrap overflow-y-scroll overflow-x-hidden">
+        <div className=" h-screen w-screen flex flex-wrap overflow-x-hidden">
             <Nav/>
             <Outlet/>
         </div>       

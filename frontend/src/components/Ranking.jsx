@@ -99,7 +99,7 @@ function Ranking() {
     }
 
     return (
-        <div className="h-full w-full flex flex-col items-center overflow-x-hidden flex-wrap md:ml-56">
+        <div className="h-full w-full flex justify-center overflow-x-hidden flex-wrap md:ml-56" >
             <div className="font-bold text-blue-950 text-4xl ml-5 mt-3 md:mt-8 flex items-center gap-2 flex-wrap">
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
                 <h1>LeaderBoard</h1>
@@ -112,7 +112,7 @@ function Ranking() {
                     {/* <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1> */}
                     <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 mt-5">
+                <div className="flex flex-col gap-5 mt-5 mb-2">
                     {users.map((user, index) => (
                         <Card rank={index + 1} key={user.id} username={user.name} questions={user.totalSolved} />
                     ))}
