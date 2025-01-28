@@ -18,12 +18,12 @@ function Card({ rank = 0, username = "Unknown User", ranking = "N/A", questions 
     };
 
     return (
-        <div className="border-2 flex w-80 md:w-192 items-center justify-around border-black h-10 rounded-2xl bg-blue-950 flex-wrap">
-            <h1 className="font-bold text-gray-200 text-lg">{rank}</h1>
+        <div className="border-2 flex w-80 md:w-192 items-center justify-between border-black h-10 rounded-2xl bg-blue-950 flex-wrap">
+            <h1 className="font-bold text-gray-200 text-lg ml-2 md:ml-5">{rank}</h1>
             <h1 className="font-bold text-gray-200 text-lg flex items-center">
                 {username} {getCrown(rank) && <span className="ml-1">{getCrown(rank)}</span>}
             </h1>
-            <h1 className="font-bold text-gray-200 text-lg">{questions}</h1>
+            <h1 className="font-bold text-gray-200 text-lg mr-2 md:mr-5">{questions}</h1>
         </div>
     );
 }

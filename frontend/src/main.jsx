@@ -15,20 +15,20 @@ import Dashboard from './components/Dahboard.jsx'
 import Help from './components/Help.jsx'
 
 const router=createBrowserRouter([
-  {
-    path:"/",
-    element:<App/>,
-    children:[
-      {
-        path:"/",
-        element:<Login/>
-      },
-      {
-        path:"/signup",
-        element:<Signup/>
-      },
-    ]
-  },
+  // {
+  //   path:"/",
+  //   element:<App/>,
+  //   children:[
+  //     {
+  //       path:"/",
+  //       element:<Login/>
+  //     },
+  //     {
+  //       path:"/signup",
+  //       element:<Signup/>
+  //     },
+  //   ]
+  // },
   {
     path:"/",
     element:<Layout/>,

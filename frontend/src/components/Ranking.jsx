@@ -99,25 +99,26 @@ function Ranking() {
     }
 
     return (
-        <div className="h-full w-full flex justify-center overflow-x-hidden flex-wrap md:ml-56" >
-            <div className="font-bold text-blue-950 text-4xl ml-5 mt-3 md:mt-8 flex items-center gap-2 flex-wrap">
+        <div className="h-full w-full border-black border-10 flex flex-col items-center md:ml-52">
+            {/* // leader board name  */}
+            <div className="font-bold text-blue-950 text-4xl ml-5 mt-3 md:mt-8 flex items-center gap-2 flex-wrap md:mb-3">
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
                 <h1>LeaderBoard</h1>
                 <FontAwesomeIcon icon={faMedal} className="text-yellow-500" />
             </div>
-            <div className="flex flex-col mt-8 justify-center items-center">
-                <div className="bg-blue-950 h-10 w-80 md:w-192 rounded-xl border-2 border-black flex justify-around items-center flex-wrap">
-                    <h1 className="text-gray-200 font-bold text-lg">Rank</h1>
+            {/* // first rank bar  */}
+            <div className="bg-blue-950 h-10 w-80 md:w-192 rounded-xl border-2 border-black flex justify-between items-center mt-3 flex-wrap">
+                    <h1 className="text-gray-200 font-bold text-lg ml-2 md:ml-3">Rank</h1>
                     <h1 className="text-gray-200 font-bold text-lg">UserName</h1>
                     {/* <h1 className="text-gray-200 font-bold text-lg">LeetRank</h1> */}
-                    <h1 className="text-gray-200 font-bold text-lg">Total Ques.</h1>
+                    <h1 className="text-gray-200 font-bold text-lg mr-2 md:mr-3">Total Ques.</h1>
                 </div>
-                <div className="flex flex-col gap-5 mt-5 mb-2">
+                {/* // user layers  */}
+                <div className="flex flex-col gap-3 mt-3 mb-2">
                     {users.map((user, index) => (
                         <Card rank={index + 1} key={user.id} username={user.name} questions={user.totalSolved} />
                     ))}
                 </div>
-            </div>
         </div>
     );
 }
