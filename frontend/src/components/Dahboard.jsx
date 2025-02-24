@@ -105,7 +105,7 @@ function Dashboard() {
     return (
         <div className=" flex flex-col  md:ml-56">
             <h1 className="font-bold text-blue-950 text-3xl ml-24 mt-4 md:ml-5 md:mt-3">Dashboard</h1>
-            <div className=" w-256 flex flex-col mt-8 gap-2 ml-20 md:flex-row md:justify-between md:ml-2">
+            <div className=" w-256 flex flex-col mt-8 gap-2 ml-20 md:flex-row md:justify-between md:ml-16">
                 {/* // leetcode rank  */}
                 <div className="h-24 w-48 bg-gray-200 flex flex-col rounded-lg items-center justify-center ">
                     <h1 className="text-gray-500 font-bold text-lg">Leetcode Rank</h1>
@@ -138,7 +138,7 @@ function Dashboard() {
 
             {/* // part 2 for graphs  */}
 
-            <div className="flex flex-col w-screen md:flex-row md:w-256 md:ml-2 gap-5">
+            <div className="flex flex-col w-screen md:flex-row md:w-256 md:ml-10 gap-5 md:mt-5">
                 <div className=" md:h-full w-80 md:ml-5 b ml-4">
                     <Piechart/>
                 </div>
@@ -146,7 +146,7 @@ function Dashboard() {
                     <LineChart/>
                 </div>
             </div>
-            <div className=" w-80 ml-1 md:w-256 md:ml-2 mt-5">
+            <div className=" w-80 ml-1 md:w-256 md:ml-10 mt-5">
                 <BarChart/>
             </div>
             

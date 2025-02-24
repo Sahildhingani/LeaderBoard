@@ -13,6 +13,8 @@ import store from './redux/store.js'
 import Ranking from './components/Ranking.jsx'
 import Dashboard from './components/Dahboard.jsx'
 import Help from './components/Help.jsx'
+import Contest from './components/Contest.jsx'
+import QuestionsPage from './components/Questionpage.jsx'
 
 const router=createBrowserRouter([
   {
@@ -44,6 +46,14 @@ const router=createBrowserRouter([
       {
         path:"/help",
         element:<Help/>
+      },
+      {
+        path:'/contest',
+        element:<Contest/>
+      },
+      {
+        path:"/question/:name",
+        element:<QuestionsPage/>
       }
     ]
   }

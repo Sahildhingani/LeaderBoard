@@ -6,6 +6,7 @@ import femaleavatar from "../components/images/femaleavatar-removebg-preview.png
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faHome, faTachometerAlt, faQuestionCircle, faSignOutAlt, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faTrophy } from '@fortawesome/free-solid-svg-icons';
 
 function Nav() {
     const [name, setName] = useState("");
@@ -78,14 +79,22 @@ function Nav() {
 
                 {/* Navigation Links */}
                 <div className="h-128 flex flex-col items-center mt-5 justify-around ">
+                    {/* // home section  */}
                     <div className="flex gap-2 items-center mr-8">
                         <FontAwesomeIcon icon={faHome} className="text-gray-300" />
                         <Link to="/home" className="text-gray-300 font-semibold hover:text-white">Home</Link>
                     </div>
+                    {/* // dashboard section  */}
                     <div className="flex gap-2 items-center mr-1">
                         <FontAwesomeIcon icon={faTachometerAlt} className="text-gray-300" />
                         <Link to="/dashboard" className="text-gray-300 font-semibold hover:text-white">Dashboard</Link>
                     </div>
+                    {/* // contest section  */}
+                    <div className="flex gap-2 items-center mr-7">
+                        <FontAwesomeIcon icon={faTrophy} className="text-gray-300" />
+                        <Link to="/contest" className="text-gray-300 font-semibold hover:text-white">Contest</Link>
+                    </div>
+                    {/* //help section */}
                     <div className="flex gap-2 items-center mr-12">
                         <FontAwesomeIcon icon={faQuestionCircle} className="text-gray-300" />
                         <Link to="/help" className="text-gray-300 font-semibold hover:text-white">Help</Link>
